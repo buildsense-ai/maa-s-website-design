@@ -8,6 +8,8 @@ import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
+  const basePath = process.env.NODE_ENV === "production" ? "/maa-s-website-design" : "";
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -19,36 +21,36 @@ export default function Home() {
             <div className="collab-track">
               <div className="collab-group">
                 <span className="collab-item">
-                  <Image src="/collab1.png" alt="Partner 1" width={120} height={40} />
+                  <Image src={`${basePath}/collab1.png`} alt="Partner 1" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab2.png" alt="Partner 2" width={120} height={40} />
+                  <Image src={`${basePath}/collab2.png`} alt="Partner 2" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab3.png" alt="Partner 3" width={120} height={40} />
+                  <Image src={`${basePath}/collab3.png`} alt="Partner 3" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab4.png" alt="Partner 4" width={120} height={40} />
+                  <Image src={`${basePath}/collab4.png`} alt="Partner 4" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab5.png" alt="Partner 5" width={120} height={40} />
+                  <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
                 </span>
               </div>
               <div className="collab-group" aria-hidden="true">
                 <span className="collab-item">
-                  <Image src="/collab1.png" alt="Partner 1" width={120} height={40} />
+                  <Image src={`${basePath}/collab1.png`} alt="Partner 1" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab2.png" alt="Partner 2" width={120} height={40} />
+                  <Image src={`${basePath}/collab2.png`} alt="Partner 2" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab3.png" alt="Partner 3" width={120} height={40} />
+                  <Image src={`${basePath}/collab3.png`} alt="Partner 3" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab4.png" alt="Partner 4" width={120} height={40} />
+                  <Image src={`${basePath}/collab4.png`} alt="Partner 4" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <Image src="/collab5.png" alt="Partner 5" width={120} height={40} />
+                  <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
                 </span>
               </div>
             </div>
