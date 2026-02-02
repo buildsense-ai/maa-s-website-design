@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/i18n/language-context";
 
 export function SponsoredBar() {
   const { t } = useLanguage();
-  const basePath = process.env.NODE_ENV === "production" ? "/maa-s-website-design" : "";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <div className="collaboration-bar">
