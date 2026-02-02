@@ -76,8 +76,9 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: var(--font-geist), var(--font-noto-sc), ui-sans-serif, system-ui;
+  --font-display: var(--font-sora), var(--font-noto-sc), var(--font-geist), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,6 +124,14 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  .hero-title {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
 }
 
@@ -369,5 +378,103 @@
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Office Copilot dark section background */
+.office-copilot-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  mask-image: linear-gradient(to left, black 20%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to left, black 20%, transparent 70%);
+}
+
+.office-copilot-bg-grid {
+  position: absolute;
+  inset: -20% -10% -20% 40%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.35;
+  animation: office-grid-drift 26s linear infinite;
+}
+
+.office-copilot-bg-lines {
+  position: absolute;
+  inset: 15% -10% 10% 55%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.16) 1px,
+      transparent 1px);
+  background-size: 100% 22px;
+  opacity: 0.65;
+  animation: office-lines-scroll 16s linear infinite;
+}
+
+.office-copilot-bg-orb {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 65%);
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: office-orb-float 12s ease-in-out infinite alternate;
+}
+
+.office-copilot-bg-cursor {
+  position: absolute;
+  top: 40%;
+  right: 22%;
+  width: 2px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+  animation: office-cursor-blink 1.8s steps(1, end) infinite;
+}
+
+@keyframes office-grid-drift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+@keyframes office-lines-scroll {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 220px;
+  }
+}
+
+@keyframes office-orb-float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(24px) scale(1.05);
+  }
+}
+
+@keyframes office-cursor-blink {
+
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  55%,
+  100% {
+    opacity: 1;
   }
 }

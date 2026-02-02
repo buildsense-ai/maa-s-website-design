@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Brain, Zap, ArrowRight, Clock, Tag } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 interface Memory {
   id: number;
@@ -17,75 +18,72 @@ interface Message {
   content: string;
 }
 
-const demoScenario = [
-  {
-    user: "I always take my coffee black in the morning, but I prefer lattes in the afternoon.",
-    assistant:
-      "Got it! Black coffee in the morning, lattes in the afternoon. Your preferences are noted.",
-    memories: [
-      {
-        id: 1,
-        text: "Prefers black coffee in mornings",
-        tag: "preference",
-        timestamp: "Just now",
-        strength: 100,
-      },
-      {
-        id: 2,
-        text: "Prefers lattes in afternoons",
-        tag: "preference",
-        timestamp: "Just now",
-        strength: 100,
-      },
-    ],
-  },
-  {
-    user: "Actually, I've switched to oat milk for my afternoon drinks now.",
-    assistant:
-      "Updated! You now prefer oat milk lattes in the afternoon. I'll remember that.",
-    memories: [
-      {
-        id: 1,
-        text: "Prefers black coffee in mornings",
-        tag: "preference",
-        timestamp: "2m ago",
-        strength: 100,
-      },
-      {
-        id: 3,
-        text: "Prefers oat milk lattes in afternoons",
-        tag: "preference",
-        timestamp: "Just now",
-        strength: 100,
-      },
-    ],
-    forgottenMemory: "Prefers lattes in afternoons",
-  },
-  {
-    user: "What should I order at this new café?",
-    assistant:
-      "Based on the time (afternoon), I'd recommend trying their oat milk latte—it aligns with your preferences!",
-    memories: [
-      {
-        id: 1,
-        text: "Prefers black coffee in mornings",
-        tag: "preference",
-        timestamp: "5m ago",
-        strength: 85,
-      },
-      {
-        id: 3,
-        text: "Prefers oat milk lattes in afternoons",
-        tag: "preference",
-        timestamp: "3m ago",
-        strength: 95,
-      },
-    ],
-    retrieved: true,
-  },
-];
-
 export function MemoryDemo() {
+  const { t } = useLanguage();
+  const demoScenario = [
+    {
+      user: t("memoryDemoUser1"),
+      assistant: t("memoryDemoAssistant1"),
+      memories: [
+        {
+          id: 1,
+          text: t("memoryDemoMemory1"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTimeJustNow"),
+          strength: 100,
+        },
+        {
+          id: 2,
+          text: t("memoryDemoMemory2"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTimeJustNow"),
+          strength: 100,
+        },
+      ],
+    },
+    {
+      user: t("memoryDemoUser2"),
+      assistant: t("memoryDemoAssistant2"),
+      memories: [
+        {
+          id: 1,
+          text: t("memoryDemoMemory1"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTime2m"),
+          strength: 100,
+        },
+        {
+          id: 3,
+          text: t("memoryDemoMemory3"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTimeJustNow"),
+          strength: 100,
+        },
+      ],
+      forgottenMemory: t("memoryDemoForgotten"),
+    },
+    {
+      user: t("memoryDemoUser3"),
+      assistant: t("memoryDemoAssistant3"),
+      memories: [
+        {
+          id: 1,
+          text: t("memoryDemoMemory1"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTime5m"),
+          strength: 85,
+        },
+        {
+          id: 3,
+          text: t("memoryDemoMemory3"),
+          tag: t("memoryDemoTagPreference"),
+          timestamp: t("memoryDemoTime3m"),
+          strength: 95,
+        },
+      ],
+      retrieved: true,
+    },
+  ];
   const [step, setStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -159,11 +157,10 @@ export function MemoryDemo() {
         <div className="text-center mb-16">
 
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            Memory in Action
+            {t("memoryDemoTitle")}
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Watch how GauzMem learns, associates, and intelligently forgets—just
-            like human memory.
+            {t("memoryDemoSubtitle")}
           </p>
         </div>
 
@@ -180,7 +177,7 @@ export function MemoryDemo() {
                 <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
                 <div className="h-3 w-3 rounded-full bg-green-500/60" />
                 <span className="ml-4 text-sm text-muted-foreground">
-                  AI Agent Chat
+                  {t("memoryDemoChatTitle")}
                 </span>
               </div>
 
@@ -204,7 +201,7 @@ export function MemoryDemo() {
                 {messages.length === 0 && (
                   <div className="flex items-center justify-center h-[200px] text-muted-foreground/50">
                     <p className="text-sm">
-                      {"Click 'Run Step' to start the demo"}
+                      {t("memoryDemoEmptyPrompt")}
                     </p>
                   </div>
                 )}
@@ -214,7 +211,7 @@ export function MemoryDemo() {
               <div className="mt-6 pt-4 border-t border-border/40 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">
-                    Step {step + 1} of {demoScenario.length}
+                    {t("memoryDemoStepLabel")} {step + 1} {t("memoryDemoStepOf")} {demoScenario.length}
                   </span>
                   <div className="flex gap-1">
                     {demoScenario.map((_, idx) => (
@@ -236,7 +233,7 @@ export function MemoryDemo() {
                       onClick={resetDemo}
                       className="border-border/60 bg-transparent"
                     >
-                      Reset Demo
+                      {t("memoryDemoReset")}
                     </Button>
                   ) : (
                     <>
@@ -248,7 +245,7 @@ export function MemoryDemo() {
                           className="bg-primary text-primary-foreground"
                         >
                           <Zap className="mr-2 h-4 w-4" />
-                          Run Step
+                          {t("memoryDemoRunStep")}
                         </Button>
                       ) : (
                         <Button
@@ -258,7 +255,7 @@ export function MemoryDemo() {
                           }}
                           className="bg-primary text-primary-foreground"
                         >
-                          Next Step
+                          {t("memoryDemoNextStep")}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       )}
@@ -272,7 +269,7 @@ export function MemoryDemo() {
             <div className="md:col-span-2 bg-secondary/30 p-6">
               <div className="flex items-center gap-2 mb-6">
                 <Brain className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold text-foreground">Memories</h3>
+                <h3 className="font-semibold text-foreground">{t("memoryDemoMemoriesTitle")}</h3>
               </div>
 
               <div className="space-y-3">
@@ -283,7 +280,7 @@ export function MemoryDemo() {
                       <p className="text-sm text-red-400 line-through">
                         {currentScenario.forgottenMemory}
                       </p>
-                      <span className="text-xs text-red-400">Forgetting...</span>
+                      <span className="text-xs text-red-400">{t("memoryDemoForgetting")}</span>
                     </div>
                   </div>
                 )}
@@ -328,9 +325,9 @@ export function MemoryDemo() {
                   <div className="flex flex-col items-center justify-center h-[200px] text-muted-foreground/50">
                     <Brain className="h-8 w-8 mb-2 opacity-30" />
                     <p className="text-sm text-center">
-                      No memories yet.
+                      {t("memoryDemoNoMemoriesLine1")}
                       <br />
-                      Run the demo to see memory in action.
+                      {t("memoryDemoNoMemoriesLine2")}
                     </p>
                   </div>
                 )}
@@ -341,7 +338,7 @@ export function MemoryDemo() {
                 <div className="mt-4 p-3 rounded-lg bg-primary/10 border border-primary/30">
                   <div className="flex items-center gap-2 text-primary text-sm">
                     <Zap className="h-4 w-4" />
-                    <span>Relevant memories retrieved for context</span>
+                    <span>{t("memoryDemoRetrievedBanner")}</span>
                   </div>
                 </div>
               )}

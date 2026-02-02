@@ -9,17 +9,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Languages } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { label: "Documentation", href: "/documentation" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Company", href: "/company" },
+    { label: t("documentation"), href: "/documentation" },
+    { label: t("pricing"), href: "/pricing" },
+    { label: t("company"), href: "/company" },
   ];
 
   useEffect(() => {
@@ -59,20 +61,20 @@ export function Navbar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Product
+                  {t("product")}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="min-w-[220px]">
                 <DropdownMenuItem asChild>
-                  <Link href="/">Memory</Link>
+                  <Link href="/">{t("memoryAsAService")}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/product/writer-agent">Writer Agent</Link>
+                  <Link href="/product/office-copilot">{t("aiOfficeCopilot")}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <span className="text-sm text-muted-foreground">Product</span>
+            <span className="text-sm text-muted-foreground">{t("product")}</span>
           )}
 
           {navItems.map((item) => (
@@ -89,7 +91,7 @@ export function Navbar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Resources
+                  {t("resources")}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="min-w-[220px]">
@@ -102,14 +104,17 @@ export function Navbar() {
                     GitHub
                   </a>
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="text-sm text-muted-foreground">{t("research")}</span>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <span className="text-sm text-muted-foreground">Resources</span>
+            <span className="text-sm text-muted-foreground">{t("resources")}</span>
           )}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button & Language Switcher */}
         <div className="hidden md:flex items-center gap-3">
           <Link href="/documentation">
             <Button
@@ -120,7 +125,7 @@ export function Navbar() {
                 : "border-white/20 text-white/70 hover:text-white hover:border-white/40"
                 }`}
             >
-              Read the Paper
+              {t("readThePaper")}
             </Button>
           </Link>
           <Button
@@ -130,7 +135,21 @@ export function Navbar() {
               : "bg-[#6366f1] text-white shadow-[0_10px_28px_rgba(99,102,241,0.55)] hover:shadow-[0_14px_36px_rgba(99,102,241,0.65)]"
               }`}
           >
-            <span className="relative z-10">Request Early Access</span>
+            <span className="relative z-10">{t("requestEarlyAccess")}</span>
+          </Button>
+
+          {/* Language Switcher */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setLanguage(language === "en" ? "zh" : "en")}
+            className={`text-sm transition-colors ${isLightSection
+              ? "text-slate-600 hover:text-slate-900"
+              : "text-white/70 hover:text-white"
+              }`}
+          >
+            <Languages className="h-4 w-4 mr-2" />
+            {language === "en" ? "中文" : "EN"}
           </Button>
         </div>
 
@@ -154,21 +173,21 @@ export function Navbar() {
           <div className="px-6 py-4 space-y-4">
             <div className="space-y-3">
               <div className="text-xs uppercase tracking-widest text-muted-foreground/70">
-                Product
+                {t("product")}
               </div>
               <Link
                 href="/"
                 className="block text-sm text-muted-foreground hover:text-foreground"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Memory
+                {t("memory")}
               </Link>
               <Link
-                href="/product/writer-agent"
+                href="/product/office-copilot"
                 className="block text-sm text-muted-foreground hover:text-foreground"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Writer Agent
+                {t("officeCopilot")}
               </Link>
             </div>
 
@@ -185,7 +204,7 @@ export function Navbar() {
 
             <div className="space-y-3">
               <div className="text-xs uppercase tracking-widest text-muted-foreground/70">
-                Resources
+                {t("resources")}
               </div>
               <a
                 href="https://github.com/buildsense-ai"
@@ -195,6 +214,9 @@ export function Navbar() {
               >
                 GitHub
               </a>
+              <span className="block text-sm text-muted-foreground">
+                {t("research")}
+              </span>
             </div>
             <div className="pt-4 flex flex-col gap-3">
               <Link href="/documentation" onClick={() => setMobileMenuOpen(false)}>
@@ -206,7 +228,7 @@ export function Navbar() {
                     : "border-white/20 text-white/70"
                     }`}
                 >
-                  Read the Paper
+                  {t("readThePaper")}
                 </Button>
               </Link>
               <Button
@@ -216,7 +238,18 @@ export function Navbar() {
                   : "bg-[#6366f1] text-white shadow-[0_10px_28px_rgba(99,102,241,0.55)]"
                   }`}
               >
-                Request Early Access
+                {t("requestEarlyAccess")}
+              </Button>
+
+              {/* Mobile Language Switcher */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setLanguage(language === "en" ? "zh" : "en")}
+                className="w-full"
+              >
+                <Languages className="h-4 w-4 mr-2" />
+                {language === "en" ? "中文" : "EN"}
               </Button>
             </div>
           </div>

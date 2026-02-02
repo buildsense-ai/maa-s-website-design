@@ -1,57 +1,57 @@
 "use client";
 
+"use client";
+
 import { Brain, Zap, GitBranch, Layers, ArrowRight, RefreshCw, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const architectureFeatures = [
-  {
-    icon: Zap,
-    title: "Fast Stream",
-    subtitle: "System 1",
-    description:
-      "Instantaneous perception and linear time-series recording. Captures the raw flow of experience in real-time.",
-    color: "primary",
-  },
-  {
-    icon: GitBranch,
-    title: "Deep Stream",
-    subtitle: "System 2",
-    description:
-      "Asynchronous processing that constructs logical graphs from atomic facts. Enables cross-document reasoning and non-linear associations.",
-    color: "accent",
-  },
-  {
-    icon: RefreshCw,
-    title: "Lifecycle Metabolism",
-    subtitle: "Active Forgetting",
-    description:
-      "Mimics biological memory with temporal decay, activation-based reinforcement, and hierarchical migration. Keeps the repository high-signal.",
-    color: "primary",
-  },
-];
-
-const microIndexingLayers = [
-  {
-    layer: "L1",
-    name: "Perceptual Stream",
-    description: "Raw data chunks indexed by spatio-temporal coordinates",
-    icon: Database,
-  },
-  {
-    layer: "L2",
-    name: "Logical Stream",
-    description: "Atomic facts and entity relationships (The Core)",
-    icon: GitBranch,
-  },
-  {
-    layer: "L3",
-    name: "Structural Stream",
-    description: "Community topics and macro-narratives",
-    icon: Layers,
-  },
-];
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function Architecture() {
+  const { t } = useLanguage();
+  const architectureFeatures = [
+    {
+      icon: Zap,
+      title: t("architectureFastTitle"),
+      subtitle: t("architectureFastSubtitle"),
+      description: t("architectureFastDesc"),
+      color: "primary",
+    },
+    {
+      icon: GitBranch,
+      title: t("architectureDeepTitle"),
+      subtitle: t("architectureDeepSubtitle"),
+      description: t("architectureDeepDesc"),
+      color: "accent",
+    },
+    {
+      icon: RefreshCw,
+      title: t("architectureLifecycleTitle"),
+      subtitle: t("architectureLifecycleSubtitle"),
+      description: t("architectureLifecycleDesc"),
+      color: "primary",
+    },
+  ];
+
+  const microIndexingLayers = [
+    {
+      layer: "L1",
+      name: t("architectureLayerL1"),
+      description: t("architectureLayerL1Desc"),
+      icon: Database,
+    },
+    {
+      layer: "L2",
+      name: t("architectureLayerL2"),
+      description: t("architectureLayerL2Desc"),
+      icon: GitBranch,
+    },
+    {
+      layer: "L3",
+      name: t("architectureLayerL3"),
+      description: t("architectureLayerL3Desc"),
+      icon: Layers,
+    },
+  ];
   return (
     <section id="architecture" className="relative py-24 px-6 overflow-hidden">
       {/* Background decoration */}
@@ -62,14 +62,13 @@ export function Architecture() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 mb-6">
             <Layers className="h-4 w-4 text-primary" />
-            <span className="text-sm text-primary">Architecture</span>
+            <span className="text-sm text-primary">{t("architectureLabel")}</span>
           </div>
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            The Dual-Stream Memory Loom
+            {t("architectureTitle")}
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Inspired by cognitive science—replicating the human duality of fast
-            intuition (System 1) and deep reasoning (System 2).
+            {t("architectureSubtitle")}
           </p>
         </div>
 
@@ -82,21 +81,19 @@ export function Architecture() {
             >
               {/* Glow effect on hover */}
               <div
-                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${
-                  feature.color === "primary"
+                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${feature.color === "primary"
                     ? "bg-gradient-to-br from-primary/10 to-transparent"
                     : "bg-gradient-to-br from-accent/10 to-transparent"
-                }`}
+                  }`}
               />
 
               <div className="relative">
                 {/* Icon */}
                 <div
-                  className={`inline-flex items-center justify-center h-14 w-14 rounded-xl mb-6 ${
-                    feature.color === "primary"
+                  className={`inline-flex items-center justify-center h-14 w-14 rounded-xl mb-6 ${feature.color === "primary"
                       ? "bg-primary/20 text-primary"
                       : "bg-accent/20 text-accent"
-                  }`}
+                    }`}
                 >
                   <feature.icon className="h-7 w-7" />
                 </div>
@@ -106,9 +103,8 @@ export function Architecture() {
                   {feature.title}
                 </h3>
                 <p
-                  className={`text-sm mb-4 ${
-                    feature.color === "primary" ? "text-primary" : "text-accent"
-                  }`}
+                  className={`text-sm mb-4 ${feature.color === "primary" ? "text-primary" : "text-accent"
+                    }`}
                 >
                   {feature.subtitle}
                 </p>
@@ -128,12 +124,10 @@ export function Architecture() {
             {/* Left: Description */}
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Micro-Indexing Architecture
+                {t("architectureMicroIndexTitle")}
               </h3>
               <p className="text-muted-foreground mb-6">
-                Data is transformed into three parallel strata, enabling
-                multi-modal retrieval across semantic, logical, and structural
-                dimensions.
+                {t("architectureMicroIndexDesc")}
               </p>
 
               <div className="space-y-4">
@@ -183,13 +177,13 @@ export function Architecture() {
 
                 {/* Labels */}
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-muted-foreground">
-                  Structural
+                  {t("architectureLabelStructural")}
                 </div>
                 <div className="absolute top-16 left-1/2 -translate-x-1/2 text-xs text-muted-foreground">
-                  Logical
+                  {t("architectureLabelLogical")}
                 </div>
                 <div className="absolute top-28 left-1/2 -translate-x-1/2 text-xs text-muted-foreground">
-                  Perceptual
+                  {t("architectureLabelPerceptual")}
                 </div>
 
                 {/* Connection lines */}
@@ -250,15 +244,15 @@ export function Architecture() {
         {/* Paper CTA */}
         <div className="mt-12 text-center">
           <p className="text-muted-foreground mb-4">
-            Dive deeper into the technical architecture and benchmark results.
+            {t("architectureCta")}
           </p>
           <Button
             variant="outline"
             className="group border-primary/30 text-primary hover:bg-primary/10 hover:border-primary bg-transparent"
           >
-            Read the Full Paper
+            {t("architectureReadFullPaper")}
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            <span className="ml-2 text-xs opacity-60">(Coming Soon)</span>
+            <span className="ml-2 text-xs opacity-60">({t("comingSoon")})</span>
           </Button>
         </div>
       </div>

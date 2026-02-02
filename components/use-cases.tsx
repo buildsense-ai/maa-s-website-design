@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import {
   Bot,
   MessageSquare,
@@ -8,47 +10,42 @@ import {
   Heart,
   Code,
 } from "lucide-react";
-
-const useCases = [
-  {
-    icon: Bot,
-    title: "AI Agents",
-    description:
-      "Give your agents persistent memory across sessions. Remember user preferences, past interactions, and learned behaviors.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Conversational AI",
-    description:
-      "Build chatbots that truly remember. No more repeating context—your assistant knows the full history.",
-  },
-  {
-    icon: Briefcase,
-    title: "Enterprise Assistants",
-    description:
-      "Deploy AI that understands your organization. Store institutional knowledge and team preferences.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Personalized Learning",
-    description:
-      "Create tutoring systems that adapt to each learner. Track progress, identify gaps, adjust pace.",
-  },
-  {
-    icon: Heart,
-    title: "Healthcare Companions",
-    description:
-      "Support patient care with AI that remembers medical history, preferences, and care protocols.",
-  },
-  {
-    icon: Code,
-    title: "Developer Tools",
-    description:
-      "Build coding assistants that know your codebase, coding style, and project context.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function UseCases() {
+  const { t } = useLanguage();
+  const useCases = [
+    {
+      icon: Bot,
+      title: t("useCaseAgentsTitle"),
+      description: t("useCaseAgentsDesc"),
+    },
+    {
+      icon: MessageSquare,
+      title: t("useCaseConversationalTitle"),
+      description: t("useCaseConversationalDesc"),
+    },
+    {
+      icon: Briefcase,
+      title: t("useCaseEnterpriseTitle"),
+      description: t("useCaseEnterpriseDesc"),
+    },
+    {
+      icon: GraduationCap,
+      title: t("useCaseLearningTitle"),
+      description: t("useCaseLearningDesc"),
+    },
+    {
+      icon: Heart,
+      title: t("useCaseHealthcareTitle"),
+      description: t("useCaseHealthcareDesc"),
+    },
+    {
+      icon: Code,
+      title: t("useCaseDeveloperTitle"),
+      description: t("useCaseDeveloperDesc"),
+    },
+  ];
   return (
     <section id="usecases" className="relative py-24 px-6">
       <div className="mx-auto max-w-6xl">
@@ -56,14 +53,13 @@ export function UseCases() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 mb-6">
             <Briefcase className="h-4 w-4 text-accent" />
-            <span className="text-sm text-accent">Use Cases</span>
+            <span className="text-sm text-accent">{t("useCasesLabel")}</span>
           </div>
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            Built for Every AI Application
+            {t("useCasesTitle")}
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            From simple chatbots to complex enterprise systems—GauzMem adapts to
-            your memory needs.
+            {t("useCasesSubtitle")}
           </p>
         </div>
 

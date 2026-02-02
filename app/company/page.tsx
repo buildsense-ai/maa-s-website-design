@@ -2,26 +2,26 @@
 
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-
-const highlights = [
-  {
-    title: "Who we are",
-    description:
-      "buildsense ai is a memory infrastructure company focused on long-term context for AI systems.",
-  },
-  {
-    title: "What we build",
-    description:
-      "We build GauzMem, a memory-as-a-service stack that combines retrieval, metabolism, and evaluation.",
-  },
-  {
-    title: "How we work",
-    description:
-      "We partner with teams building AI-native workflows across research, productivity, and enterprise.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export default function CompanyPage() {
+  const { t } = useLanguage();
+
+  const highlights = [
+    {
+      title: t("companyWhoWeAre"),
+      description: t("companyWhoWeAreDesc"),
+    },
+    {
+      title: t("companyWhatWeBuild"),
+      description: t("companyWhatWeBuildDesc"),
+    },
+    {
+      title: t("companyHowWeWork"),
+      description: t("companyHowWeWorkDesc"),
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -33,17 +33,15 @@ export default function CompanyPage() {
         <div className="hero-content">
           <div className="hero-copy">
             <div className="mb-8 inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-200 backdrop-blur-sm">
-              Company
+              {t("companyBadge")}
             </div>
             <h1 className="hero-title text-balance text-4xl font-extrabold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
-              buildsense ai
+              {t("companyHeroTitle")}
               <br />
-              Memory-first systems.
+              {t("companyHeroTitleLine2")}
             </h1>
             <p className="hero-subtitle mt-6 max-w-xl text-pretty text-lg md:text-xl">
-              We believe memory is the missing infrastructure for AI. Our mission
-              is to make long-term context reliable, interpretable, and
-              production-ready.
+              {t("companyHeroSubtitle")}
             </p>
           </div>
           <div className="hero-visual" aria-hidden="true">

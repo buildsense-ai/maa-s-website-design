@@ -2,29 +2,32 @@
 
 import Link from "next/link";
 import { Github, Twitter, Linkedin } from "lucide-react";
-
-const footerLinks = {
-  product: [
-    { label: "Architecture", href: "#architecture" },
-    { label: "Demo", href: "#demo" },
-    { label: "Use Cases", href: "#usecases" },
-    { label: "Pricing", href: "#" },
-  ],
-  developers: [
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
-    { label: "SDK", href: "#" },
-    { label: "Changelog", href: "#" },
-  ],
-  company: [
-    { label: "About", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
-};
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    product: [
+      { label: t("footerArchitecture"), href: "#architecture" },
+      { label: t("footerDemo"), href: "#demo" },
+      { label: t("footerUseCases"), href: "#usecases" },
+      { label: t("footerPricing"), href: "#" },
+    ],
+    developers: [
+      { label: t("documentation"), href: "#" },
+      { label: t("footerApiReference"), href: "#" },
+      { label: t("footerSdk"), href: "#" },
+      { label: t("footerChangelog"), href: "#" },
+    ],
+    company: [
+      { label: t("footerAbout"), href: "#" },
+      { label: t("footerBlog"), href: "#" },
+      { label: t("footerCareers"), href: "#" },
+      { label: t("footerContact"), href: "#" },
+    ],
+  };
+
   return (
     <footer className="relative border-t border-border/40 bg-card/30">
       <div className="mx-auto max-w-6xl px-6 py-16">
@@ -39,8 +42,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
-              The memory layer engineered for Association and Forgetting.
-              State-of-the-art memory for AI agents.
+              {t("footerDescription")}
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -69,7 +71,7 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Product</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footerProduct")}</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -85,7 +87,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Developers</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footerDevelopers")}</h4>
             <ul className="space-y-3">
               {footerLinks.developers.map((link) => (
                 <li key={link.label}>
@@ -101,7 +103,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Company</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t("footerCompany")}</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -120,20 +122,20 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2026 GauzMem. All rights reserved.
+            © 2026 GauzMem. {t("footerRights")}
           </p>
           <div className="flex items-center gap-6">
             <Link
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              {t("footerPrivacyPolicy")}
             </Link>
             <Link
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Terms of Service
+              {t("footerTermsOfService")}
             </Link>
           </div>
         </div>

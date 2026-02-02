@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { MemoryDemo } from "@/components/memory-demo";
@@ -6,56 +5,15 @@ import { Architecture } from "@/components/architecture";
 import { UseCases } from "@/components/use-cases";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
+import { SponsoredBar } from "@/components/sponsored-bar";
 
 export default function Home() {
-  const basePath = process.env.NODE_ENV === "production" ? "/maa-s-website-design" : "";
-
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
       <section className="feature-section light-section">
-        <div className="collaboration-bar">
-          <span className="collab-label">Sponsored by</span>
-          <div className="collab-logos">
-            <div className="collab-track">
-              <div className="collab-group">
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab1.png`} alt="Partner 1" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab2.png`} alt="Partner 2" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab3.png`} alt="Partner 3" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab4.png`} alt="Partner 4" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
-                </span>
-              </div>
-              <div className="collab-group" aria-hidden="true">
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab1.png`} alt="Partner 1" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab2.png`} alt="Partner 2" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab3.png`} alt="Partner 3" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab4.png`} alt="Partner 4" width={120} height={40} />
-                </span>
-                <span className="collab-item">
-                  <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SponsoredBar />
         <MemoryDemo />
         <Architecture />
       </section>
