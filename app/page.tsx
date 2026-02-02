@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { MemoryDemo } from "@/components/memory-demo";
@@ -18,36 +19,36 @@ export default function Home() {
             <div className="collab-track">
               <div className="collab-group">
                 <span className="collab-item">
-                  <img src="/collab1.png" alt="Partner 1" />
+                  <Image src="/collab1.png" alt="Partner 1" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab2.png" alt="Partner 2" />
+                  <Image src="/collab2.png" alt="Partner 2" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab3.png" alt="Partner 3" />
+                  <Image src="/collab3.png" alt="Partner 3" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab4.png" alt="Partner 4" />
+                  <Image src="/collab4.png" alt="Partner 4" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab5.png" alt="Partner 5" />
+                  <Image src="/collab5.png" alt="Partner 5" width={120} height={40} />
                 </span>
               </div>
               <div className="collab-group" aria-hidden="true">
                 <span className="collab-item">
-                  <img src="/collab1.png" alt="Partner 1" />
+                  <Image src="/collab1.png" alt="Partner 1" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab2.png" alt="Partner 2" />
+                  <Image src="/collab2.png" alt="Partner 2" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab3.png" alt="Partner 3" />
+                  <Image src="/collab3.png" alt="Partner 3" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab4.png" alt="Partner 4" />
+                  <Image src="/collab4.png" alt="Partner 4" width={120} height={40} />
                 </span>
                 <span className="collab-item">
-                  <img src="/collab5.png" alt="Partner 5" />
+                  <Image src="/collab5.png" alt="Partner 5" width={120} height={40} />
                 </span>
               </div>
             </div>

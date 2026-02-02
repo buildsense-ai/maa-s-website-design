@@ -141,7 +141,7 @@ export default function WriterAgentPage() {
               </p>
               <div className="mt-6 overflow-hidden rounded-2xl border border-border/60 bg-white/80 p-4">
                 <Image
-                  src="/assets/image-07b8423c-06b1-409d-ba88-f4d2fe9da3ca.png"
+                  src="/placeholder.jpg"
                   alt="Writer PRD Architecture Diagram"
                   width={1200}
                   height={680}
