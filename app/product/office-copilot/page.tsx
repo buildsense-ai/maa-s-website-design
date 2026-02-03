@@ -383,7 +383,7 @@ export default function OfficeCopilotPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center">
+          <div className="p-2 text-center">
             <h2 className="text-3xl font-semibold text-white">
               {t("officeCopilotCtaTitle")}
             </h2>

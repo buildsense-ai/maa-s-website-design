@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'harmonyos-sans-sc-webfont-splitted';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -76,8 +77,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist), var(--font-noto-sc), ui-sans-serif, system-ui;
-  --font-display: var(--font-sora), var(--font-noto-sc), var(--font-geist), ui-sans-serif, system-ui;
+  --font-sans: "HarmonyOS Sans SC", var(--font-source-sans-3), var(--font-geist), ui-sans-serif, system-ui;
+  --font-display: "HarmonyOS Sans SC", var(--font-sora), var(--font-source-sans-3), var(--font-geist), ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -131,7 +132,8 @@
   h3,
   .hero-title {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+    line-height: 2.1;
   }
 }
 
@@ -183,6 +185,60 @@
   animation-delay: -5s;
 }
 
+/* Team hero background accents */
+.team-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.team-hero-grid {
+  position: absolute;
+  inset: -20% -10% -20% 35%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.35;
+  animation: team-grid-drift 30s linear infinite;
+  mask-image: linear-gradient(to left, black 20%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to left, black 20%, transparent 75%);
+}
+
+.team-hero-orb {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: team-orb-float 14s ease-in-out infinite alternate;
+}
+
+@keyframes team-grid-drift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(48px);
+  }
+}
+
+@keyframes team-orb-float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(18px) scale(1.05);
+  }
+}
+
 @keyframes breathe {
   0% {
     opacity: 0.3;
@@ -216,7 +272,7 @@
 }
 
 .hero-title {
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.04em;
   background: linear-gradient(180deg, #ffffff 0%, #cfd2da 100%);
   background-clip: text;
@@ -290,6 +346,50 @@
   box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 2;
+}
+
+.team-highlights {
+  background: #f8f9ff;
+  box-shadow: none;
+}
+
+.team-members {
+  background: #f8f9ff;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.team-highlight-card {
+  padding: 0;
+  border-left: 2px solid rgba(99, 102, 241, 0.35);
+  padding-left: 20px;
+}
+
+.team-highlight-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2c2f3a;
+}
+
+.team-highlight-tag::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+}
+
+.team-highlight-text {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4b4f5c;
 }
 
 .light-section {

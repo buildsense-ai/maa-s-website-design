@@ -23,7 +23,7 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="hero-title text-balance text-1xl font-extrabold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="hero-title text-balance text-1xl font-medium tracking-wide text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
             {t("heroTitle")}
             <br />
             {t("heroTitleLine2")}

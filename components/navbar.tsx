@@ -18,11 +18,7 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const navItems = [
-    { label: t("documentation"), href: "/documentation" },
-    { label: t("pricing"), href: "/pricing" },
-    { label: t("company"), href: "/company" },
-  ];
+  const navItems = [{ label: t("documentation"), href: "/documentation" }];
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +82,26 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {mounted ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  {t("team")}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="min-w-[200px]">
+                <DropdownMenuItem asChild>
+                  <Link href="/team/about">{t("about")}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/team/blog">{t("blog")}</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <span className="text-sm text-muted-foreground">{t("team")}</span>
+          )}
 
           {mounted ? (
             <DropdownMenu>
@@ -201,6 +217,26 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
+
+            <div className="space-y-3">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground/70">
+                {t("team")}
+              </div>
+              <Link
+                href="/team/about"
+                className="block text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("about")}
+              </Link>
+              <Link
+                href="/team/blog"
+                className="block text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("blog")}
+              </Link>
+            </div>
 
             <div className="space-y-3">
               <div className="text-xs uppercase tracking-widest text-muted-foreground/70">

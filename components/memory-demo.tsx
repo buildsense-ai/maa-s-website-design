@@ -153,17 +153,6 @@ export function MemoryDemo() {
   return (
     <section id="demo" className="relative py-24 px-6">
       <div className="mx-auto max-w-6xl">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            {t("memoryDemoTitle")}
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            {t("memoryDemoSubtitle")}
-          </p>
-        </div>
-
         {/* Demo Container */}
         <div className="relative rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm overflow-hidden">
           {/* Glowing border effect */}
