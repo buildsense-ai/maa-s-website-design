@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { MemoryDemo } from "@/components/memory-demo";
+import { FrontendDemo } from "@/components/frontend-demo";
 import { Architecture } from "@/components/architecture";
 import { UseCases } from "@/components/use-cases";
 import { CTASection } from "@/components/cta-section";
@@ -11,10 +11,15 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
+      <div className="home-deep-bg">
+        <div className="home-deep-bg__layer" aria-hidden="true" />
+        <Hero />
+        <section className="-mt-px">
+          <FrontendDemo />
+        </section>
+      </div>
       <section className="feature-section light-section">
         <SponsoredBar />
-        <MemoryDemo />
         <Architecture />
       </section>
       <UseCases />

@@ -14,8 +14,7 @@ export function CTASection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-[#6366f1]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-4xl">
-        <div className="relative rounded-3xl border border-border/60 bg-card/40 backdrop-blur-sm p-12 md:p-16 text-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/14 via-transparent to-[#6366f1]/6 opacity-70 pointer-events-none" />
+        <div className="relative p-12 md:p-16 text-center">
           <div className="relative z-10">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 px-4 py-2 mb-8">

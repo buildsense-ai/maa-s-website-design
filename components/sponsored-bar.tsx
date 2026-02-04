@@ -28,6 +28,9 @@ export function SponsoredBar() {
             <span className="collab-item">
               <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
             </span>
+            <span className="collab-item">
+              <Image src={`${basePath}/collab6.png`} alt="Partner 5" width={120} height={40} />
+            </span>
           </div>
           <div className="collab-group" aria-hidden="true">
             <span className="collab-item">
@@ -44,6 +47,9 @@ export function SponsoredBar() {
             </span>
             <span className="collab-item">
               <Image src={`${basePath}/collab5.png`} alt="Partner 5" width={120} height={40} />
+            </span>
+            <span className="collab-item">
+              <Image src={`${basePath}/collab6.png`} alt="Partner 5" width={120} height={40} />
             </span>
           </div>
         </div>

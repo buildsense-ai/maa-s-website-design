@@ -26,38 +26,45 @@ export default function TeamAboutPage() {
   ];
 
   const members: Array<{
-    name: string;
+    nameKey: TranslationKey;
     roleKey: TranslationKey;
+    subtitleKey: TranslationKey;
     image: string;
   }> = [
       {
-        name: "Hanyuan Zhu",
-        roleKey: "teamMemberRoleResearch",
+        nameKey: "teamMemberName1",
+        roleKey: "teamMemberRole1",
+        subtitleKey: "teamMemberSubtitle1",
         image: `${basePath}/headshot.png`,
       },
       {
-        name: "Hongxuan Zhang",
-        roleKey: "teamMemberRoleEngineering",
+        nameKey: "teamMemberName2",
+        roleKey: "teamMemberRole2",
+        subtitleKey: "teamMemberSubtitle2",
         image: `${basePath}/headshot.png`,
       },
       {
-        name: "Zhanglong Guo",
-        roleKey: "teamMemberRoleEngineering",
+        nameKey: "teamMemberName3",
+        roleKey: "teamMemberRole3",
+        subtitleKey: "teamMemberSubtitle3",
         image: `${basePath}/headshot.png`,
       },
       {
-        name: "Guowei Chen",
-        roleKey: "teamMemberRoleResearch",
+        nameKey: "teamMemberName4",
+        roleKey: "teamMemberRole4",
+        subtitleKey: "teamMemberSubtitle4",
         image: `${basePath}/headshot.png`,
       },
       {
-        name: "Zijian Wang",
-        roleKey: "teamMemberRoleEngineering",
+        nameKey: "teamMemberName5",
+        roleKey: "teamMemberRole5",
+        subtitleKey: "teamMemberSubtitle5",
         image: `${basePath}/headshot.png`,
       },
       {
-        name: "Yunqi Zha",
-        roleKey: "teamMemberRoleProduct",
+        nameKey: "teamMemberName6",
+        roleKey: "teamMemberRole6",
+        subtitleKey: "teamMemberSubtitle6",
         image: `${basePath}/headshot.png`,
       },
     ];
@@ -163,37 +170,39 @@ export default function TeamAboutPage() {
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {firstRowMembers.map((member, index) => (
                 <div
-                  key={member.name}
+                  key={member.nameKey}
                   className={`text-center ${index === 0 ? "lg:col-start-2" : "lg:col-start-3"}`}
                 >
                   <div className="mx-auto h-28 w-28 overflow-hidden rounded-full border border-border/60 bg-white/70 shadow-sm">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={t(member.nameKey)}
                       width={112}
                       height={112}
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <p className="mt-4 text-sm font-semibold text-foreground">{member.name}</p>
+                  <p className="mt-4 text-sm font-semibold text-foreground">{t(member.nameKey)}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{t(member.roleKey)}</p>
+                  <p className="mt-1 text-xs text-muted-foreground/80">{t(member.subtitleKey)}</p>
                 </div>
               ))}
             </div>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {secondRowMembers.map((member) => (
-                <div key={member.name} className="text-center">
+                <div key={member.nameKey} className="text-center">
                   <div className="mx-auto h-28 w-28 overflow-hidden rounded-full border border-border/60 bg-white/70 shadow-sm">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={t(member.nameKey)}
                       width={112}
                       height={112}
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <p className="mt-4 text-sm font-semibold text-foreground">{member.name}</p>
+                  <p className="mt-4 text-sm font-semibold text-foreground">{t(member.nameKey)}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{t(member.roleKey)}</p>
+                  <p className="mt-1 text-xs text-muted-foreground/80">{t(member.subtitleKey)}</p>
                 </div>
               ))}
             </div>

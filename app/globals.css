@@ -150,6 +150,27 @@
   isolation: isolate;
 }
 
+.home-deep-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-deep-bg__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #050509 0%, #101018 40%, #1b1f3a 70%, #050509 100%);
+}
+
+.home-deep-bg>* {
+  position: relative;
+  z-index: 1;
+}
+
+.home-deep-bg .hero-section {
+  background: transparent;
+}
+
 .hero-background {
   position: absolute;
   inset: 0;
