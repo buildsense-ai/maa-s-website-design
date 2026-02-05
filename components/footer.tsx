@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Twitter, Linkedin } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
 
@@ -34,12 +35,18 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="rounded-md border border-white bg-white px-2 py-0.5 text-lg font-semibold text-black">
-                  GauzMem
-                </span>
+            <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
+              <div className="relative h-[48px] w-[48px] transition-transform group-hover:scale-105">
+                <Image
+                  src="/logo_gm.svg"
+                  alt="GauzMem Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
+              <span className="rounded-md border border-white bg-white px-2 py-0.5 text-lg font-semibold text-black transition-colors group-hover:bg-white/90">
+                GauzMem
+              </span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
               {t("footerDescription")}

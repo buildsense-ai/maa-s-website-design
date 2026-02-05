@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -43,12 +44,19 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="flex items-center gap-3">
-            <span className="rounded-md border border-white bg-white px-2 py-0.5 text-lg font-semibold tracking-tight text-black">
-              GauzMem
-            </span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="relative h-[48px] w-[48px] transition-transform group-hover:scale-105">
+            <Image
+              src="/logo_gm.svg"
+              alt="GauzMem Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
+          <span className="rounded-md border border-white bg-white px-2 py-0.5 text-lg font-semibold tracking-tight text-black transition-colors group-hover:bg-white/90">
+            GauzMem
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
