@@ -23,14 +23,14 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="hero-title text-balance text-1xl font-medium tracking-wide text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="hero-title text-balance text-3xl font-medium tracking-wide text-transparent sm:text-4xl md:text-5xl lg:text-6xl">
             {t("heroTitle")}
             <br />
             {t("heroTitleLine2")}
           </h1>
 
           {/* Sub-headline */}
-          <p className="hero-subtitle mt-6 max-w-xl text-pretty text-lg md:text-xl">
+          <p className="hero-subtitle mt-6 max-w-xl text-pretty text-base sm:text-lg md:text-xl">
             {t("heroSubtitle")}
           </p>
         </div>

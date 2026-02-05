@@ -23,8 +23,8 @@ export function Footer() {
       { label: t("footerChangelog"), href: "#" },
     ],
     company: [
-      { label: t("footerAbout"), href: "#" },
-      { label: t("footerBlog"), href: "#" },
+      { label: t("footerAbout"), href: "/team/about" },
+      { label: t("footerBlog"), href: "/team/blog" },
       { label: t("footerCareers"), href: "#" },
       { label: t("footerContact"), href: "#" },
     ],
@@ -33,9 +33,9 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border/40 bg-card/30">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
-          <div className="col-span-2">
+          <div className="col-span-1 sm:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
               <div className="relative h-[48px] w-[48px] transition-transform group-hover:scale-105">
                 <Image
@@ -128,7 +128,7 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-muted-foreground">
             © 2026 GauzMem. {t("footerRights")}
           </p>

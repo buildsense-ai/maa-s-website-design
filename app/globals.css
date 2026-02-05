@@ -342,7 +342,8 @@
 
 @media (max-width: 900px) {
   .hero-section {
-    padding: 6rem 8%;
+    padding: 4rem 5%;
+    min-height: 85vh;
   }
 
   .hero-content {
@@ -355,7 +356,42 @@
   }
 
   .hero-visual {
-    order: 2;
+    display: none;
+  }
+
+  .prop-mesh-wrap {
+    display: none;
+  }
+
+  /* 禁用 Orb 动画以提升性能 */
+  .glow-orb {
+    display: none;
+  }
+
+  /* 禁用背景动画 */
+  .home-deep-bg__layer {
+    animation: none;
+  }
+
+  /* 禁用网格漂移动画 */
+  .team-hero-grid,
+  .office-copilot-bg-grid {
+    animation: none;
+  }
+
+  /* 禁用 orb 浮动动画 */
+  .team-hero-orb,
+  .office-copilot-bg-orb {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  /* Architecture 和 Use Cases 区域内边距 */
+  .feature-section,
+  #architecture,
+  #usecases {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -444,7 +480,7 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   width: 100%;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .collab-label {
@@ -597,5 +633,56 @@
   55%,
   100% {
     opacity: 1;
+  }
+}
+
+/* 移动端断点优化 */
+@media (max-width: 768px) {
+  .collaboration-bar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 16px 0;
+  }
+
+  .collab-logos {
+    width: 90vw;
+    flex: 1 1 90vw;
+  }
+
+  .collab-logos img {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* 防止文本溢出 */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* 优化水平滚动 */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 3rem 4%;
+    min-height: auto;
+  }
+}
+
+/* 尊重用户的动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
