@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/i18n/language-context";
 
 export function Footer() {
   const { t } = useLanguage();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   const footerLinks = {
     product: [
@@ -38,7 +39,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
               <div className="relative h-[48px] w-[48px] transition-transform group-hover:scale-105">
                 <Image
-                  src="/logo_gm.svg"
+                  src={`${basePath}/logo_gm.svg`}
                   alt="GauzMem Logo"
                   fill
                   className="object-contain"
