@@ -76,6 +76,12 @@ export function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link href="/product/office-copilot">{t("aiOfficeCopilot")}</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard">Dashboard</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/playground">Playground</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
@@ -213,6 +219,20 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("officeCopilot")}
+              </Link>
+              <Link
+                href="/dashboard"
+                className="block text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Dashboard
+              </Link>
+              <Link
+                href="/playground"
+                className="block text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Playground
               </Link>
             </div>
 

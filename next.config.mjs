@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
-  output: 'export',
-  basePath,
-  assetPrefix: basePath,
+  // Static export for production (GitHub Pages), disabled in dev for rewrites
+  ...(isDev ? {} : { output: 'export' }),
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -12,6 +12,17 @@ const nextConfig = {
     unoptimized: true,
   },
   devIndicators: false,
+  // Proxy API calls to GauzMem backend in dev mode
+  async rewrites() {
+    return isDev
+      ? [
+          {
+            source: '/api/:path*',
+            destination: 'http://localhost:1235/api/:path*',
+          },
+        ]
+      : [];
+  },
 }
 
 export default nextConfig
